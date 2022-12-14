@@ -47,7 +47,7 @@ module.exports = {
             filename: '[name].css'
         }),
     ],
-    devServer: {
+    devServer: { 
         static: {
             directory: path.join(__dirname, 'dist'),
         },

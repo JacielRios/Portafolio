@@ -1,0 +1,32 @@
+footer {
+    margin-top: 64px;
+    width: 100%;
+}
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+footer ul li{
+    list-style: none;
+}
+li a {
+    text-decoration: none;
+    font-size: large;
+    color: var(--primary-red);
+}
+footer div{
+    display: grid;
+    place-items: center;
+}
+footer div p {
+    margin: 0;
+}
+@media (min-width: 910px) {
+    footer {
+        font-size: 24px;
+    }
+    li a {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,84 @@
+section {
+    width: 100%;
+}
+.about-me {
+    display: grid;
+    place-content: center;
+}
+.top {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    place-items: center;
+    padding: 54px 16px 0px 16px;
+}
+.top div:nth-child(1) h1{
+    color: var(--primary-red);
+    font-size: 32px;
+    letter-spacing: 1px;
+    float: left;
+    position: relative;
+}
+.top div:nth-child(2){
+    width: 100px;
+    height: 150px;
+    background-color: grey;
+    justify-self: end;
+}
+.container-text {
+    display: table;
+}
+h1 span {
+    position: absolute;
+    right: 0;
+    width: 0;
+    background-color: var(--black);
+    animation: reveal 2s 1;
+}
+.bottom {
+    word-spacing: 1px;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 24px 16px 16px 16px;
+}
+
+@keyframes reveal {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+@media (min-width: 768px) {
+    .top div:nth-child(2){
+        width: 150px;
+        height: 200px;
+        justify-self: center;
+    }
+    .bottom{
+        width: 80%;
+        margin: auto;
+    }
+}
+@media (min-width: 910px) {
+    .top div:nth-child(1) h1{
+        font-size: 38px;
+        letter-spacing: 2px;
+    }
+    .container-text h2{
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+    .bottom {
+        word-spacing: 2px;
+        letter-spacing: 2px;
+        font-size: 22px;
+        width: 85%;
+    }
+}
+@media (min-width: 1400px) {
+    .bottom {
+        width: 70%;
+    }
+}

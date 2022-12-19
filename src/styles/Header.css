@@ -1,0 +1,30 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+nav .logo{
+    width: 74px;
+    height: 74px;
+}
+.mode {
+    width: 42px;
+    margin-right: 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.mode img{
+    width: 100%;
+    height: 100%;
+}
+@media (min-width: 768px) {
+    nav .logo{
+        width: 100px;
+        height: 100px;
+    }
+    nav .mode {
+        width: 64px;
+    }
+}

@@ -1,13 +1,26 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Button from "@mui/material/Button";
+import { useSnackbar } from "notistack";
 
 import "@styles/Form.css";
 
 const Form = () => {
   const contactForm = useRef();
 
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleAlertSuccess = (variant) => () => {
+    enqueueSnackbar("¡Gracias!, el mensaje se envio corretamente", { variant });
+  };
+  const handleAlertError = (variant) => () => {
+    enqueueSnackbar(
+      "Lo siento hubo un error, por favor considera contactarme por alguna red social.",
+      { variant }
+    );
+  };
+
   const sendEmail = (e) => {
-    e.preventDefault();
     emailjs
       .sendForm(
         "service_00695hc",
@@ -15,20 +28,73 @@ const Form = () => {
         contactForm.current,
         "5AK9NVWALWQOssHvB"
       )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+      .then(handleAlertSuccess("success"), handleAlertError("error"));
+  };
+
+  const [formState, setFormState] = useState({
+    from_name: "",
+    from_email: "",
+    message: "",
+    nameError: "",
+    emailError: "",
+    messageError: "",
+  });
+
+  const validate = () => {
+    let nameError = "";
+    let emailError = "";
+    let messageError = "";
+
+    if (!formState.from_name) {
+      nameError = "El nombre es requerido";
+    }
+    if (!formState.from_email.includes("@")) {
+      emailError = "Debe ser un correo valido";
+    }
+    if (!formState.message) {
+      messageError = "El mensaje es requerido";
+    }
+
+    if (nameError || emailError || messageError) {
+      setFormState({ ...formState, nameError, emailError, messageError });
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validate();
+    if (isValid) {
+      sendEmail();
+      setFormState({
+        from_name: "",
+        from_email: "",
+        message: "",
+        nameError: "",
+        emailError: "",
+        messageError: "",
+      });
+    }
   };
 
   return (
     <>
       <h2 className="title">Contacto</h2>
-      <form ref={contactForm} onSubmit={sendEmail} className="form-container">
+      <form
+        ref={contactForm}
+        onSubmit={handleSubmit}
+        className="form-container"
+      >
         <div className="form-group">
           <input
             name="from_name"
@@ -36,6 +102,8 @@ const Form = () => {
             type="text"
             id="name"
             placeholder=" "
+            value={formState.from_name}
+            onChange={handleChange}
           />
           <label htmlFor="name" className="form-label">
             Nombre:
@@ -43,9 +111,11 @@ const Form = () => {
           <input
             name="from_email"
             className="form-input"
-            type="text"
+            type="email"
             id="email"
             placeholder=" "
+            value={formState.from_email}
+            onChange={handleChange}
           />
           <label htmlFor="email" className="form-label">
             Correo:
@@ -55,16 +125,22 @@ const Form = () => {
             className="form-input"
             id="message"
             placeholder=" "
+            value={formState.message}
+            onChange={handleChange}
           />
           <label className="form-label" id="label-area" htmlFor="message">
             Mensaje:
           </label>
         </div>
+        <div style={{ color: "red" }}>{formState.nameError}</div>
+        <div style={{ color: "red" }}>{formState.emailError}</div>
+        <div style={{ color: "red" }}>{formState.messageError}</div>
         <div className="button-container">
-          <button type="submit" className="form-button">
+          <Button className="form-button" type="submit">
             Enviar
-          </button>
+          </Button>
         </div>
+        
       </form>
     </>
   );

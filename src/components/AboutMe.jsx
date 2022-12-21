@@ -16,10 +16,9 @@ const AboutMe = () => {
       </section>
       <section className="bottom">
         <p>
-          Tengo 18 años, vivo en Monterrey, México y soy desarrollador web.
-          Actualmente estoy estudiando la carrera de ingeniería en sistemas
-          computacionales, además de esto, estudio de forma autodidacta y cuento
-          con un título de técnico en programación.
+          Soy desarrollador web. Actualmente estoy estudiando la carrera de
+          ingeniería en sistemas computacionales, además de esto, estudio de
+          forma autodidacta y cuento con un título de técnico en programación.
         </p>
       </section>
     </section>

@@ -4,6 +4,8 @@ import leftArrow from "@icons/left-arrow.png";
 import rightArrow from "@icons/right-arrow.png";
 import openProject from "@icons/open.png";
 import github from "@icons/github.png";
+import { useTranslation } from 'react-i18next';
+
 import "@styles/Projects.css";
 
 const RenderProjects = (props) => {
@@ -38,6 +40,8 @@ const RenderProjects = (props) => {
 };
 
 const Projects = () => {
+  const { t } = useTranslation();
+
   const data = [
     {
       id: 1,
@@ -77,7 +81,7 @@ const Projects = () => {
   ];
   return (
     <>
-      <h2 className="title">Proyectos</h2>
+      <h2 className="title">{t('projects')}</h2>
       <section className="container-card">
         {/* <div className="arrow">
           <img src={leftArrow} />

@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 import "@styles/AboutMe.css";
 
 const AboutMe = () => {
+  const { t } = useTranslation();
   return (
     <section className="about-me">
       <section className="top">
         <div className="container-text">
-          <h2>Hola, soy</h2>
+          <h2>{t('hello')}</h2>
           <h1>
             JACIEL<span>&#160;</span> RIOS <span>&#160;</span>
           </h1>
@@ -15,11 +17,7 @@ const AboutMe = () => {
         <div></div>
       </section>
       <section className="bottom">
-        <p>
-          Soy desarrollador web. Actualmente estoy estudiando la carrera de
-          ingeniería en sistemas computacionales, además de esto, estudio de
-          forma autodidacta y cuento con un título de técnico en programación.
-        </p>
+        <p>{t('about')}</p>
       </section>
     </section>
   );

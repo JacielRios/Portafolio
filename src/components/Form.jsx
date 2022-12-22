@@ -2,10 +2,12 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Button from "@mui/material/Button";
 import { useSnackbar } from "notistack";
+import { useTranslation } from 'react-i18next';
 
 import "@styles/Form.css";
 
 const Form = () => {
+  const { t } = useTranslation();
   const contactForm = useRef();
 
   const { enqueueSnackbar } = useSnackbar();
@@ -46,13 +48,13 @@ const Form = () => {
     let messageError = "";
 
     if (!formState.from_name) {
-      nameError = "El nombre es requerido";
+      nameError = `${t('nameError')}`;
     }
     if (!formState.from_email.includes("@")) {
-      emailError = "Debe ser un correo valido";
+      emailError = `${t('emailError')}`;
     }
     if (!formState.message) {
-      messageError = "El mensaje es requerido";
+      messageError = `${t('messageError')}`;
     }
 
     if (nameError || emailError || messageError) {
@@ -89,7 +91,7 @@ const Form = () => {
 
   return (
     <>
-      <h2 className="title">Contacto</h2>
+      <h2 className="title">{t('contact')}</h2>
       <form
         ref={contactForm}
         onSubmit={handleSubmit}
@@ -106,7 +108,7 @@ const Form = () => {
             onChange={handleChange}
           />
           <label htmlFor="name" className="form-label">
-            Nombre:
+            {t('contactName')}:
           </label>
           <input
             name="from_email"
@@ -118,7 +120,7 @@ const Form = () => {
             onChange={handleChange}
           />
           <label htmlFor="email" className="form-label">
-            Correo:
+            {t('email')}:
           </label>
           <textarea
             name="message"
@@ -129,7 +131,7 @@ const Form = () => {
             onChange={handleChange}
           />
           <label className="form-label" id="label-area" htmlFor="message">
-            Mensaje:
+            {t('message')}:
           </label>
         </div>
         <div style={{ color: "red" }}>{formState.nameError}</div>
@@ -137,7 +139,7 @@ const Form = () => {
         <div style={{ color: "red" }}>{formState.messageError}</div>
         <div className="button-container">
           <Button className="form-button" type="submit">
-            Enviar
+            {t('submit')}
           </Button>
         </div>
         

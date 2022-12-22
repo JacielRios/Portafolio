@@ -8,12 +8,14 @@ import react from '@logos/react.png';
 import bootstrap from '@logos/bootstrap.png';
 import laravel from '@logos/laravel.png';
 import git from '@logos/git.png';
+import { useTranslation } from "react-i18next";
 
 
 const Technologies = () => {
+    const { t } = useTranslation();
     return(
         <>
-            <h2 className="title">Tecnologías</h2>
+            <h2 className="title">{t('technologies')}</h2>
             <section className="container-cards">
                 <div className="card">
                     <img src={html} alt="Logo html" />

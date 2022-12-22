@@ -1,16 +1,23 @@
 nav{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: 100%;
+}
+nav div {
     width: 100%;
 }
 nav .logo{
     width: 74px;
     height: 74px;
 }
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
 .mode {
     width: 42px;
     margin-right: 8px;
+    color: inherit;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -19,12 +26,56 @@ nav .logo{
     width: 100%;
     height: 100%;
 }
+.translate {
+    width: 42px;
+    margin-right: 8px;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+.translate:active{
+    background-color: transparent;
+}
+.translate img{
+    width: 100%;
+    height: 100%;
+}
+.translate-options {
+    display: flex;
+    position: absolute;
+    background-color: rgb(49, 49, 49);
+    width: auto;
+    left: -120px;
+}
+.translate-options p {
+    margin: 0px;
+    padding: 12px;
+}
+.translate-options p a {
+    color: #2061e4;
+    text-decoration: none;
+    padding: 6px;
+}
+.translate-options p a:hover{
+    border: 1px solid var(--primary-red);
+}
+#inactive{
+    display: none;
+}
 @media (min-width: 768px) {
     nav .logo{
         width: 100px;
         height: 100px;
     }
+    .buttons-container {
+        margin-right: 18px;
+    }
     nav .mode {
-        width: 64px;
+        width: 48px;
+    }
+    nav .translate {
+        width: 48px;
     }
 }

@@ -25,13 +25,15 @@ const Header = () => {
   }
   localStorage.setItem("mode", bodyClass);
 
-  const [translateWhiteClass, setTranslateWhiteClass] = useState(bodyClass === "dark-mode" ? "active" : "inactive");
+  const [translateWhiteClass, setTranslateWhiteClass] = useState(bodyClass === "dark-mode" || bodyClass == "null" ? "active" : "inactive");
 
-  const [translateBlackClass, setTranslateBlackClass] = useState(bodyClass === "dark-mode" ? "inactive" : "active");
+  const [translateBlackClass, setTranslateBlackClass] = useState(bodyClass === "dark-mode" || bodyClass == "null" ? "inactive" : "active");
   
   const [toggle, setToggle] = useState("inactive");
 
-  const [isToggled, setIsToggled] = useState(bodyClass === "dark-mode" ? false : true);
+  const [isToggled, setIsToggled] = useState(bodyClass === "dark-mode" || bodyClass == "null" ? false : true);
+
+  // console.log(bodyClass === "dark-mode" || bodyClass != "null");
 
   const handleToggle = () => {
     setToggle(toggle === "inactive" ? "active" : "inactive");
@@ -48,7 +50,7 @@ const Header = () => {
       translateBlackClass === "inactive" ? "active" : "inactive"
     );
   };
-  console.log(isToggled);
+  
   useEffect(() => {
     document.body.className = localStorage.getItem("mode");
   }, [localStorage.getItem("mode")]);

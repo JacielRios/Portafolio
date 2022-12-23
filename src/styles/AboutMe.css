@@ -31,8 +31,13 @@ h1 span {
     position: absolute;
     right: 0;
     width: 0;
-    background-color: var(--black);
     animation: reveal 2s 1;
+}
+.black{
+    background-color: var(--black);
+}
+.white{
+    background-color: var(--white);
 }
 .bottom {
     word-spacing: 1px;

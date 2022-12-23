@@ -18,15 +18,20 @@ const lngs = {
 const Header = () => {
   const { t, i18n } = useTranslation();
 
-  const [ toggle, setToggle ] = useState("inactive");
+  const [bodyClass, setBodyClass] = useState(`${localStorage.getItem("mode")}`);
 
-  const [isToggled, setIsToggled] = useState("");
+  if (bodyClass == "null") {
+    setBodyClass("dark-mode");
+  }
+  localStorage.setItem("mode", bodyClass);
 
-  const [bodyClass, setBodyClass] = useState("dark-mode");
+  const [translateWhiteClass, setTranslateWhiteClass] = useState(bodyClass === "dark-mode" ? "active" : "inactive");
 
-  const [translateWhiteClass, setTranslateWhiteClass] = useState("active");
+  const [translateBlackClass, setTranslateBlackClass] = useState(bodyClass === "dark-mode" ? "inactive" : "active");
+  
+  const [toggle, setToggle] = useState("inactive");
 
-  const [translateBlackClass, setTranslateBlackClass] = useState("inactive");
+  const [isToggled, setIsToggled] = useState(bodyClass === "dark-mode" ? false : true);
 
   const handleToggle = () => {
     setToggle(toggle === "inactive" ? "active" : "inactive");
@@ -35,6 +40,7 @@ const Header = () => {
   const handleClick = () => {
     setIsToggled(!isToggled);
     setBodyClass(bodyClass === "dark-mode" ? "light-mode" : "dark-mode");
+    localStorage.setItem("mode", bodyClass);
     setTranslateWhiteClass(
       translateWhiteClass === "active" ? "inactive" : "active"
     );
@@ -42,14 +48,11 @@ const Header = () => {
       translateBlackClass === "inactive" ? "active" : "inactive"
     );
   };
-
+  console.log(isToggled);
   useEffect(() => {
-    document.body.className = bodyClass;
-  }, [bodyClass]);
+    document.body.className = localStorage.getItem("mode");
+  }, [localStorage.getItem("mode")]);
 
-  function Alert(){
-    alert("hello");
-  }
   return (
     <>
       <nav>
@@ -74,10 +77,10 @@ const Header = () => {
             />
             <div className="translate-options" id={toggle}>
               <p>
-                <a onClick={() => i18n.changeLanguage('es')}>Español</a>
+                <a onClick={() => i18n.changeLanguage("es")}>Español</a>
               </p>
               <p>
-                <a onClick={() => i18n.changeLanguage('en')}>English</a>
+                <a onClick={() => i18n.changeLanguage("en")}>English</a>
               </p>
             </div>
           </button>

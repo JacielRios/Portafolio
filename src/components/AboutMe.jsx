@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import me from '../assets/images/me.jpeg';
 import "@styles/AboutMe.css";
 
 const AboutMe = () => {
@@ -20,7 +21,9 @@ const AboutMe = () => {
             <span className={animationColor}>&#160;</span>
           </h1>
         </div>
-        <div></div>
+        <div>
+          <img src={me} alt="Jaciel Rios" />
+        </div>
       </section>
       <section className="bottom">
         <p>{t("about")}</p>

@@ -13,10 +13,12 @@ const Home = () => {
   return (
     <SnackbarProvider maxSnack={3}>
       <Header />
+      <div className="main-container">
       <AboutMe />
       <Projects />
       <Technologies />
       <Form />
+      </div>
       <Footer />
     </SnackbarProvider>
   );

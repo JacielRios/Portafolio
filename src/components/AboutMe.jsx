@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import me from '../assets/images/me.jpeg';
+import me from "../assets/images/me.jpeg";
 import "@styles/AboutMe.css";
 
 const AboutMe = () => {

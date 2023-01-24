@@ -8,6 +8,7 @@ import translateWhite from "@icons/translate-white.png";
 import translateBlack from "@icons/translate-black.png";
 import { useTranslation, Trans } from "react-i18next";
 
+
 import "@styles/Header.css";
 
 const lngs = {
@@ -25,15 +26,19 @@ const Header = () => {
   }
   localStorage.setItem("mode", bodyClass);
 
-  const [translateWhiteClass, setTranslateWhiteClass] = useState(bodyClass === "dark-mode" || bodyClass == "null" ? "active" : "inactive");
+  const [translateWhiteClass, setTranslateWhiteClass] = useState(
+    bodyClass === "dark-mode" || bodyClass == "null" ? "active" : "inactive"
+  );
 
-  const [translateBlackClass, setTranslateBlackClass] = useState(bodyClass === "dark-mode" || bodyClass == "null" ? "inactive" : "active");
-  
+  const [translateBlackClass, setTranslateBlackClass] = useState(
+    bodyClass === "dark-mode" || bodyClass == "null" ? "inactive" : "active"
+  );
+
   const [toggle, setToggle] = useState("inactive");
 
-  const [isToggled, setIsToggled] = useState(bodyClass === "dark-mode" || bodyClass == "null" ? false : true);
-
-  // console.log(bodyClass === "dark-mode" || bodyClass != "null");
+  const [isToggled, setIsToggled] = useState(
+    bodyClass === "dark-mode" || bodyClass == "null" ? false : true
+  );
 
   const handleToggle = () => {
     setToggle(toggle === "inactive" ? "active" : "inactive");
@@ -50,7 +55,7 @@ const Header = () => {
       translateBlackClass === "inactive" ? "active" : "inactive"
     );
   };
-  
+
   useEffect(() => {
     document.body.className = localStorage.getItem("mode");
   }, [localStorage.getItem("mode")]);

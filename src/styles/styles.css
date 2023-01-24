@@ -15,3 +15,18 @@
     background-color: var(--white);
     color: var(--black);
 }
+.main-container {
+    padding: 16px;
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1100px) {
+    .main-container {
+        width: 70%;
+    }
+}

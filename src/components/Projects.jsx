@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
-import leftArrow from "@icons/left-arrow.png";
-import rightArrow from "@icons/right-arrow.png";
 import openProject from "@icons/open.png";
 import github from "@icons/github.png";
 import { useTranslation } from 'react-i18next';
 
 import "@styles/Projects.css";
 
-const RenderProjects = (props) => {
+const RenderProjects = ({ name, srcImage, srcDeploy, srcRepository}) => {
   const [toggle, setToggle] = useState("image");
 
   const [inactive, setInactive] = useState("inactive");
@@ -22,17 +20,17 @@ const RenderProjects = (props) => {
   };
 
   return (
-    <div className="border-card">
+    <div className="border-card" >
       <div className="container-image" onClick={handleInactive}>
         <img
-          src={props.img}
-          alt={props.name}
+          src={srcImage}
+          alt={name}
           className={toggle}
           onClick={handleToggle}
         />
         <div className={inactive}>
-          <a href={props.deploy} target="_blank" onClick={handleToggle}><img src={openProject} alt="Abrir proyecto" /></a>
-          <a href={props.repository} target="_blank" onClick={handleToggle}><img src={github} alt="Abrir repositorio" /></a>
+          <a href={srcDeploy} target="_blank" onClick={handleToggle}><img src={openProject} alt="Abrir proyecto" /></a>
+          <a href={srcRepository} target="_blank" onClick={handleToggle}><img src={github} alt="Abrir repositorio" /></a>
         </div>
       </div>
     </div>
@@ -83,15 +81,9 @@ const Projects = () => {
     <>
       <h2 className="title">{t('projects')}</h2>
       <section className="container-card">
-        {/* <div className="arrow">
-          <img src={leftArrow} />
-        </div> */}
         {data.map((item) => (
-          <RenderProjects key={item.id} img={item.img} deploy={item.deploy} repository={item.repository}/>
+          <RenderProjects key={item.id} name={item.name} srcImage={item.img}  srcDeploy={item.deploy} srcRepository={item.repository}/>
         ))}
-        {/* <div className="arrow">
-          <img src={rightArrow} />
-        </div> */}
       </section>
     </>
   );

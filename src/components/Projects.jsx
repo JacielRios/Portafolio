@@ -26,6 +26,7 @@ const RenderProjects = ({ name, srcImage, srcDeploy, srcRepository}) => {
           src={srcImage}
           alt={name}
           className={toggle}
+          loading="lazy"
           onClick={handleToggle}
         />
         <div className={inactive}>

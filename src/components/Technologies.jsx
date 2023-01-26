@@ -18,25 +18,25 @@ const Technologies = () => {
             <h2 className="title">{t('technologies')}</h2>
             <section className="container-cards">
                 <div className="card">
-                    <img src={html} alt="Logo html" />
+                    <img src={html} alt="Logo html" loading="lazy" />
                 </div>
                 <div className="card">
-                    <img src={css} alt="Logo css" />
+                    <img src={css} alt="Logo css" loading="lazy" />
                 </div>
                 <div className="card">
-                    <img src={js} alt="Logo javascript" />
+                    <img src={js} alt="Logo javascript" loading="lazy" />
                 </div>
                 <div className="card">
-                    <img src={react} alt="Logo react" />
+                    <img src={react} alt="Logo react" loading="lazy" />
                 </div>
                 <div className="card">
-                    <img src={bootstrap} alt="Logo bootstrap" />
+                    <img src={bootstrap} alt="Logo bootstrap" loading="lazy" />
                 </div>
                 <div className="card">
-                    <img src={laravel} alt="Logo laravel" />
+                    <img src={laravel} alt="Logo laravel" loading="lazy" />
                 </div>
                 <div className="card">
-                    <img src={git} alt="Logo git" />
+                    <img src={git} alt="Logo git" loading="lazy" />
                 </div>
             </section>
         </>

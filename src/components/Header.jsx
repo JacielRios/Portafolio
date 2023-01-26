@@ -8,7 +8,6 @@ import translateWhite from "@icons/translate-white.png";
 import translateBlack from "@icons/translate-black.png";
 import { useTranslation, Trans } from "react-i18next";
 
-
 import "@styles/Header.css";
 
 const lngs = {
@@ -71,7 +70,7 @@ const Header = () => {
             {!isToggled && <img src={lightMode} alt="Modo brillante" />}
             {isToggled && <img src={nightMode} alt="Modo oscuro" />}
           </button>
-          <button className="translate" onClick={handleToggle}>
+          <div className="translate" onClick={handleToggle}>
             <img
               src={translateWhite}
               alt="Cambiar el idioma"
@@ -83,14 +82,18 @@ const Header = () => {
               className={translateBlackClass}
             />
             <div className="translate-options" id={toggle}>
-              <p>
-                <a onClick={() => i18n.changeLanguage("es")}>Español</a>
-              </p>
-              <p>
-                <a onClick={() => i18n.changeLanguage("en")}>English</a>
-              </p>
+              <div>
+                <button onClick={() => i18n.changeLanguage("es")}>
+                  Español
+                </button>
+              </div>
+              <div>
+                <button onClick={() => i18n.changeLanguage("en")}>
+                  English
+                </button>
+              </div>
             </div>
-          </button>
+          </div>
         </div>
       </nav>
     </>

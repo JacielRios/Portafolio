@@ -4,7 +4,7 @@ import '@styles/Certificates.css';
 
 const Card = ({ id, name, date, link  }) => {
     return (
-    <a href={`https://platzi.com${link}`} key={id} target="_blank">
+    <a href={`https://platzi.com${link}`}  target="_blank">
       <h4>{name}</h4>
       <p><span>Obtenido el: </span>{new Date(date).toLocaleDateString()}</p>
       <p><span>Por: </span> Platzi</p>
@@ -82,7 +82,7 @@ const Certificates = () => {
       <h2 className="title">Certificados</h2>
       <section className="container-certificates">
       {data.map((item) => (
-            <Card id={item.id} name={item.name} date={item.date} link={item.link}/>
+            <Card key={item.id} name={item.name} date={item.date} link={item.link}/>
         ))}
       </section>
     </>

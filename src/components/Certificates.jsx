@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../styles/Certificates.css';
+import '@styles/Certificates.css';
 
 const Card = ({ id, name, date, link  }) => {
     return (

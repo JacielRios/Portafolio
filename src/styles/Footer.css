@@ -22,9 +22,12 @@ li a {
     font-size: large;
     color: var(--primary-red);
 }
+li {
+    transition: transform .8s ease;
+}
 li:hover {
     transform: scale(1.2);
-    transition: .5s ease all;
+    transition: .6s ease all;
 }
 @media (min-width: 910px) {
     footer {
